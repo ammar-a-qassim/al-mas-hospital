@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ["nodejs"]
+
+[phases.install]
+cmds = ["npm install --ignore-scripts"]
+
+[phases.build]
+cmds = [
+    "npm install --prefix client",
+    "npm install --prefix server",
+    "npm run build --prefix client"
+]
+
+[start]
+cmd = "npm run start:web"
