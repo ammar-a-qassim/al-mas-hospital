@@ -12,9 +12,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
-app.use(express.json({ charset: 'utf-8' }));
-app.use(express.urlencoded({ extended: true, charset: 'utf-8' }));
+// Find the CORS configuration and update it
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://YOUR-FRONTEND-URL.onrender.com'  // Add your actual frontend URL
+    ],
+    credentials: true
+}));
 
 // Set UTF-8 charset for all responses
 app.use((req, res, next) => {
